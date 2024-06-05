@@ -1,8 +1,7 @@
 "use server"
-import Image from "next/image";
 import pb from "../../lib/pocketbase";
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const posts = await pb.collection('post').getFullList(200 /* batch size */, {
