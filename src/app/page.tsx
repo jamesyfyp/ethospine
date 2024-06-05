@@ -1,7 +1,7 @@
+"use server"
+
 import Image from "next/image";
 import pb from "../../lib/pocketbase";
-
-
 
 export default async function Home() {
   const posts = await pb.collection('post').getFullList(200 /* batch size */, {
