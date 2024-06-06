@@ -1,9 +1,15 @@
 import pb from "../../lib/pocketbase";
 
+const pbUrl = process.env.NEXT_PUBLIC_PB_URL
+
 export async function Posts() {
   const posts = await pb.collection('post').getFullList(200 /* batch size */, {
     sort: '-created',
   });
+  const images = await pb.collection("images").getFullList(200 /* batch size */, {
+    sort: '-created',
+  });
+
   return (
   <>
     {posts.map((post)=>{
@@ -13,6 +19,12 @@ export async function Posts() {
           {post.field}
           {post.summary}
         </div>
+      )
+    })}
+    {images.map((image)=>{
+      console.log(image)
+      return(
+        <img src={`${pbUrl}api/files/${image.collectionId}/${image.id}/${image.image}?thumb=200x200`}></img>
       )
     })}
   </> 
