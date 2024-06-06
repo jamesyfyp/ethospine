@@ -22,9 +22,8 @@ export async function Posts() {
       )
     })}
     {images.map((image)=>{
-      console.log(image)
       return(
-        <img src={`${pbUrl}api/files/${image.collectionId}/${image.id}/${image.image}?thumb=200x200`}></img>
+        <img key={image.id} src={`${pbUrl}api/files/${image.collectionId}/${image.id}/${image.image}?thumb=200x200`}></img>
       )
     })}
   </> 
