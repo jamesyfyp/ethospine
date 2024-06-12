@@ -1,7 +1,7 @@
 import pb from "@/lib/pocketbase";
 import pbUrl from "@/lib/pbUrl";
 import ProductCard from "@/components/productCard";
-import { Product } from "@/app/layout";
+import { Product } from "@/contexts/cartContext";
 
 export async function generateStaticParams() {
   const bands = await pb.collection("band").getFullList(200, {
