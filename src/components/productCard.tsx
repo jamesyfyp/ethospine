@@ -1,5 +1,5 @@
 "use client";
-import { CartContext, Product } from "@/app/layout";
+import { CartContext, Product } from "@/contexts/cartContext";
 import { useState, useContext } from "react";
 import pbUrl from "@/lib/pbUrl";
 

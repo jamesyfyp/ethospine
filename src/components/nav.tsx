@@ -1,7 +1,6 @@
 "use client";
 import { useState, useContext } from "react";
-import { CartContext } from "@/app/layout";
-import { Product } from "@/app/layout";
+import { CartContext, Product } from "@/contexts/cartContext";
 import CartItem from "./cartItem";
 
 export default function Nav() {
@@ -27,7 +26,7 @@ export default function Nav() {
             <>empty cart</>
           ) : (
             <div className="flex-grid text-center rows-3 w-full">
-              {cart.map((product) => {
+              {cart.map((product: Product) => {
                 return <CartItem key={product.id} product={product} />;
               })}
             </div>

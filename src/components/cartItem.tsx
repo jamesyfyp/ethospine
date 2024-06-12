@@ -1,6 +1,5 @@
-import { Product } from "@/app/layout";
+import { CartContext, Product } from "@/contexts/cartContext";
 import { useContext } from "react";
-import { CartContext } from "@/app/layout";
 
 export default function CartItem({ product }: any) {
   const { cart, setCart } = useContext(CartContext);

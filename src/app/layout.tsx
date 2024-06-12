@@ -2,9 +2,11 @@
 
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { createContext, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./globals.css";
 import Nav from "@/components/nav";
+import { CartContext } from "@/contexts/cartContext";
+import { Product } from "@/contexts/cartContext";
 
 import { cn } from "@/lib/utils";
 
@@ -18,26 +20,6 @@ const metadata: Metadata = {
   description: "sick riffage and noise",
 };
 
-export interface Product {
-  collectionId: string;
-  id: string;
-  name: string;
-  price: number;
-  type: string;
-  band: string;
-  images: string[];
-  // Add other properties as needed
-}
-
-interface CartContextType {
-  cart: Product[];
-  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
-}
-
-export const CartContext = createContext<CartContextType>({
-  cart: [],
-  setCart: () => {},
-});
 export default function RootLayout({
   children,
 }: Readonly<{
