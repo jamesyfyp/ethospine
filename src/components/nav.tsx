@@ -28,7 +28,7 @@ export default function Nav() {
           ) : (
             <div className="flex-grid text-center rows-3 w-full">
               {cart.map((product) => {
-                return <CartItem product={product} />;
+                return <CartItem key={product.id} product={product} />;
               })}
             </div>
           )}
