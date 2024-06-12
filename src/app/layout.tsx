@@ -7,6 +7,7 @@ import "./globals.css";
 import Nav from "@/components/nav";
 import { CartContext } from "@/contexts/cartContext";
 import { Product } from "@/contexts/cartContext";
+import { Toaster } from "sonner";
 
 import { cn } from "@/lib/utils";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         >
           <Nav />
           {children}
+          <Toaster />
         </body>
       </CartContext.Provider>
     </html>

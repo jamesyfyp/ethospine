@@ -14,6 +14,7 @@ export default function CartItem({ product }: any) {
     <div key={product.id} className="inline-grid text-center rows-3 w-full">
       <>{product.name}</>
       <>{product.price}</>
+      <>{product.qty}</>
       <button onClick={removeFromCart}>remove from cart</button>
     </div>
   );

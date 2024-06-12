@@ -5,7 +5,7 @@ import CartItem from "./cartItem";
 
 export default function Nav() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const { cart, setCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <div className="w-full h-10 bg-slate-500">

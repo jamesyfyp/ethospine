@@ -8,7 +8,7 @@ export interface Product {
   type: string;
   band: string;
   images: string[];
-  // Add other properties as needed
+  qty: number;
 }
 
 interface CartContextType {
