@@ -4,9 +4,13 @@ import ProductCard from "@/components/productCard";
 import { Product } from "@/contexts/cartContext";
 
 export async function generateStaticParams() {
-  const bands = await pb.collection("band").getFullList(200, {
+  let bands = await pb.collection("band").getFullList(200, {
     sort: "-created",
   });
+
+  bands.forEach((band) => {
+    band.name = band.name.replaceAll(" ", "_");
+  })
 
   return bands.map((band) => ({
     slug: band.slug,
@@ -16,7 +20,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: { slug: string } }) {
   const bandInfo = await pb
     .collection("band")
-    .getFirstListItem(`name~"${params.slug}"`, {
+    .getFirstListItem(`name~"${params.slug.replaceAll("_", " ")}"`, {
       expand: "product",
     });
   if (!bandInfo.expand) {
