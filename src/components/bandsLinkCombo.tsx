@@ -18,12 +18,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
-
-export function BandsLinkCombo({bands}: any) {
+export function BandsLinkCombo({ bands }: any) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const router = useRouter();
+  const pathName = usePathname();
+
+  const urlPattern = /^\/[^\/]+\/(.*)/;
+  React.useEffect(() => {
+    if (pathName.includes("bands")) {
+      const match = pathName.match(urlPattern);
+      if (match && match[1]) {
+        console.log(match[1]);
+        setValue(match[1].replaceAll("_", " "));
+      }
+    } else {
+        setValue("")
+    }
+  }, [pathName]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -32,7 +46,7 @@ export function BandsLinkCombo({bands}: any) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[200px] justify-between truncate "
         >
           {value
             ? bands.find((band: any) => band.value === value)?.label
@@ -53,9 +67,10 @@ export function BandsLinkCombo({bands}: any) {
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
+                    router.push(`/bands/${band.value.replaceAll(" ", "_")}`);
                   }}
                 >
-                  <Link href={`/bands/${band.value.replaceAll(" ", "_")}`}>{band.label}</Link>
+                  {band.label}
                   <CheckIcon
                     className={cn(
                       "ml-auto h-4 w-4",

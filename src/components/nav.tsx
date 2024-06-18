@@ -3,24 +3,30 @@ import { useState, useContext } from "react";
 import { CartContext, Product } from "@/contexts/cartContext";
 import CartItem from "./cartItem";
 import { BandLinks } from "./bandLinks";
+import Link from "next/link";
+import { ShoppingCart } from 'lucide-react';
 
 export default function Nav() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const { cart } = useContext(CartContext);
 
   return (
-    <div className="w-full flex gap-2 pt-2 pl-2 h-10 bg-slate-500">
+    <div className="w-full flex gap-2 p-4 h-18 bg-black sticky top-0">
+      <Link className="text-2xl text-white font-bold" href="/">
+        Home
+      </Link>
+      <Link className="text-2xl text-white font-bold" href="/">
+        Shop
+      </Link>
       <BandLinks />
-      <p>shop</p>
-      <p>home</p>
       <div
-        className="ml-auto pr-2"
+        className="ml-auto text-white text-2xl font-bold pr-2 pt-1.5 hover:cursor-pointer"
         onClick={(e) => {
           e.preventDefault();
           setDialogOpen(!dialogOpen);
         }}
       >
-        cart
+        <ShoppingCart strokeWidth={3} size={26} />
       </div>
       {dialogOpen ? (
         <dialog

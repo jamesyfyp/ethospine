@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const bandInfo = await pb
+  let bandInfo = await pb
     .collection("band")
     .getFirstListItem(`name~"${params.slug.replaceAll("_", " ")}"`, {
       expand: "product",
@@ -26,13 +26,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!bandInfo.expand) {
     return <>error</>;
   }
-
+  
   return (
     <div className="flex-col-center w-full">
       <h1 className="w-full text-center font-bold text-6xl p-10 ">
         {bandInfo.name}
       </h1>
-      <div className="flex columns-2 gap-4 p-10">
+      <div className="grid columns-2 gap-4 p-10">
         {bandInfo.expand.product.map((product: Product) => {
           return <ProductCard key={product.id} product={product} />;
         })}
