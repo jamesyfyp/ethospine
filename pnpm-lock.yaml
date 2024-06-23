@@ -23,6 +23,9 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.3.3)(react@19.0.0-rc-a26e3f403e-20240611)
+  '@stripe/react-stripe-js':
+    specifier: ^2.7.1
+    version: 2.7.1(@stripe/stripe-js@4.0.0)(react-dom@19.0.0-rc-a26e3f403e-20240611)(react@19.0.0-rc-a26e3f403e-20240611)
   '@stripe/stripe-js':
     specifier: ^4.0.0
     version: 4.0.0
@@ -1135,6 +1138,19 @@ packages:
   /@rushstack/eslint-patch@1.10.3:
     resolution: {integrity: sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==}
     dev: true
+
+  /@stripe/react-stripe-js@2.7.1(@stripe/stripe-js@4.0.0)(react-dom@19.0.0-rc-a26e3f403e-20240611)(react@19.0.0-rc-a26e3f403e-20240611):
+    resolution: {integrity: sha512-/i13alp27HaSBbMM6kW0jhy8KqdtOL1T/EcRjFjfhvt+CBtMEg8TD7y28W3oZG0+OBDdCyGGnXgNgrKPYQH40g==}
+    peerDependencies:
+      '@stripe/stripe-js': ^1.44.1 || ^2.0.0 || ^3.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@stripe/stripe-js': 4.0.0
+      prop-types: 15.8.1
+      react: 19.0.0-rc-a26e3f403e-20240611
+      react-dom: 19.0.0-rc-a26e3f403e-20240611(react@19.0.0-rc-a26e3f403e-20240611)
+    dev: false
 
   /@stripe/stripe-js@4.0.0:
     resolution: {integrity: sha512-R5zewuzTVPGn4dXkavbgDk8vSILkT5hRlzga10p6JzngR17qKi1fgc27kl58TmaVvgBZGngTRNH2j9kYdvfPGA==}
@@ -3195,7 +3211,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}

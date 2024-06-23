@@ -5,7 +5,7 @@ import CartItem from "./cartItem";
 import { BandLinks } from "./bandLinks";
 import Link from "next/link";
 import { ShoppingCart } from 'lucide-react';
-import CheckoutButton from "./checkout";
+import Checkout from "./checkOut";
 
 export default function Nav() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -41,7 +41,7 @@ export default function Nav() {
               {cart.map((product: Product) => {
                 return <CartItem key={product.id} product={product} />
               })}
-              <CheckoutButton />
+              <Checkout amount={5} />
             </div>
           )}
         </dialog>

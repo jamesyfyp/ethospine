@@ -8,6 +8,16 @@ import Nav from "@/components/nav";
 import { CartContext } from "@/contexts/cartContext";
 import { Product } from "@/contexts/cartContext";
 import { Toaster } from "sonner";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import convertToSubcurrency from "@/lib/convertToSubcurrency";
+
+if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY === undefined) {
+  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
+}
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 import { cn } from "@/lib/utils";
 
@@ -35,8 +45,17 @@ export default function RootLayout({
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable
           )}
-        >
+        >   
+        <Elements
+          stripe={stripePromise}
+          options={{
+          mode: "payment",
+          amount: convertToSubcurrency(5),
+          currency: "usd",
+        }}>
           <Nav />
+          
+  </ Elements >
           {children}
           <Toaster />
         </body>
