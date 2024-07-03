@@ -46,7 +46,7 @@ export default function Checkout({ amount }: { amount: number }) {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `http://${process.env.NEXT_PUBLIC_DOMAIN}/payment-success?amount=${amount}`,
       },
     });
 
