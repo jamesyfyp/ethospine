@@ -1,7 +1,7 @@
 "use client"
 import { useContext } from "react";
 import CartItem from "./cartItem";
-import Checkout from "./Checkout";
+import Checkout from "./checkout";
 import { CartContext, Product } from "@/contexts/cartContext";
 
 
