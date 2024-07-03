@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import {
   useStripe,
   useElements,
@@ -90,4 +91,4 @@ export default function Checkout({ amount }: { amount: number }) {
       </button>
     </form>
   );
-};
+}
