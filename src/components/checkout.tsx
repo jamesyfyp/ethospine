@@ -4,7 +4,7 @@ import {
   useStripe,
   useElements,
   PaymentElement,
-} from "@stripe/react-stripe-js";
+} from "@stripe/react-stripe-js"; 
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
 
 export default function Checkout({ amount }: { amount: number }) {
